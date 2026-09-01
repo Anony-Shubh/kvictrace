@@ -1,7 +1,13 @@
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
+import { MapPin } from "lucide-react";
 
 const MapDisplay = ({ latitude, longitude, address }) => {
   const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || "";
+
+  const { isLoaded, loadError } = useJsApiLoader({
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
+    libraries: ["places"],
+  });
 
   if (!GOOGLE_MAPS_API_KEY) {
     return (
@@ -14,11 +20,6 @@ const MapDisplay = ({ latitude, longitude, address }) => {
       </div>
     );
   }
-
-  const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
-    libraries: ["places"],
-  });
 
   const mapCenter = {
     lat: latitude,

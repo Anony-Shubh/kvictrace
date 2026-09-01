@@ -34,6 +34,16 @@ select {
   font: inherit;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  word-break: break-word;
+}
+
 h1,
 h2,
 h3,
@@ -77,8 +87,10 @@ button {
 .identity-group {
   display: flex;
   align-items: center;
-  gap: 14px;
+  justify-content: flex-start;
+  gap: 34px;
   min-width: 0;
+  padding-right: 28px;
 }
 
 .header-logo {
@@ -86,6 +98,7 @@ button {
   width: 62px;
   height: 68px;
   object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(28, 25, 22, 0.04));
 }
 
 .logo-msme {
@@ -221,6 +234,23 @@ button {
   color: #f6ded3;
   font-size: 11px;
   text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footer-visits {
+  color: #f9eedf;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.footer-visits strong {
+  color: #ffd275;
+  font-weight: 700;
 }
 
 .footer-meta span {
@@ -1330,56 +1360,37 @@ button:disabled {
 }
 
 /* ========== RESPONSIVE STYLES ========== */
-@media (max-width: 800px) {
-  .pip-video-container {
-    bottom: 16px;
-    right: 16px;
-  }
-
-  .pip-video-box {
-    width: 240px;
-    height: 180px;
-  }
-
-  .modal-content {
-    max-height: 90vh;
-  }
-}
-
-@media (max-width: 600px) {
-  .pip-video-box {
-    width: 200px;
-    height: 150px;
-  }
-
-  .modal-header {
-    padding: 16px;
-  }
-
-  .modal-header h2 {
-    font-size: 20px;
-  }
-
-  .modal-body {
-    padding: 16px;
-  }
-
-  .journey-step {
-    gap: 16px;
-  }
-
-  .journey-step-number {
-    min-width: 40px;
-    height: 40px;
-    font-size: 16px;
-  }
-}
-
 @media (max-width: 1160px) {
+  .header-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    min-height: auto;
+    gap: 14px;
+    padding: 16px 20px;
+  }
+
+  .identity-group {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .ministry-copy {
+    justify-self: center;
+  }
+
+  .portal-title {
+    white-space: normal;
+  }
+
   .hero-section,
   .institution-grid,
   .story-layout {
     grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    max-width: none;
+    min-height: 320px;
   }
 
   .product-grid {
@@ -1395,19 +1406,35 @@ button:disabled {
   }
 }
 
-@media (max-width: 760px) {
-  .top-strip {
-    padding: 18px 16px 0;
+@media (max-width: 800px) {
+  .page-status-wrap {
+    padding: 8px 14px 0;
   }
 
-  .brand-mark {
-    width: 52px;
-    height: 52px;
+  .header-inner {
+    padding: 14px 16px;
   }
 
-  .verified-pill {
-    padding: 8px 12px;
-    font-size: 0.82rem;
+  .header-logo,
+  .logo-msme,
+  .logo-kvic,
+  .logo-khadi {
+    width: 48px;
+    height: auto;
+  }
+
+  .portal-title h1 {
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
+  }
+
+  .ministry-copy p {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+
+  .ministry-copy strong,
+  .ministry-copy span {
+    font-size: 12px;
   }
 
   .content-shell {
@@ -1416,6 +1443,10 @@ button:disabled {
 
   .hero-section {
     gap: 18px;
+  }
+
+  .hero-copy {
+    padding-top: 0;
   }
 
   .hero-copy h1 {
@@ -1429,6 +1460,11 @@ button:disabled {
   .meta-row {
     flex-direction: column;
     gap: 18px;
+    width: 100%;
+  }
+
+  .meta-item {
+    min-width: 0;
   }
 
   .origin-item {
@@ -1513,5 +1549,102 @@ button:disabled {
     border-top-width: 16px;
     border-bottom-width: 16px;
     border-left-width: 24px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: auto;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .support {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .footer-meta {
+    text-align: center;
+  }
+
+  .pip-video-container {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .pip-video-box {
+    width: 240px;
+    height: 180px;
+  }
+
+  .modal-content {
+    max-height: 90vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .identity-group {
+    gap: 10px;
+  }
+
+  .header-logo,
+  .logo-msme,
+  .logo-kvic,
+  .logo-khadi {
+    width: 42px;
+  }
+
+  .portal-title h1 {
+    font-size: 1.7rem;
+  }
+
+  .verified-pill {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+  }
+
+  .hero-copy h1 {
+    font-size: 2.6rem;
+  }
+
+  .hero-copy p {
+    font-size: 1.08rem;
+  }
+
+  .primary-action,
+  .secondary-action {
+    min-height: 46px;
+    padding: 0 18px;
+    font-size: 0.9rem;
+  }
+
+  .pip-video-box {
+    width: 200px;
+    height: 150px;
+  }
+
+  .modal-header {
+    padding: 16px;
+  }
+
+  .modal-header h2 {
+    font-size: 20px;
+  }
+
+  .modal-body {
+    padding: 16px;
+  }
+
+  .journey-step {
+    gap: 16px;
+  }
+
+  .journey-step-number {
+    min-width: 40px;
+    height: 40px;
+    font-size: 16px;
   }
 }

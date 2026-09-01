@@ -8,14 +8,14 @@ function Header() {
       <div className="header-inner">
         <div className="identity-group">
           <img
-            className="header-logo logo-msme"
-            src={msmeLogo}
-            alt="Ministry of Micro, Small and Medium Enterprises, Government of India"
-          />
-          <img
             className="header-logo logo-kvic"
             src={kvicLogo}
             alt="Khadi and Village Industries Commission"
+          />
+          <img
+            className="header-logo logo-msme"
+            src={msmeLogo}
+            alt="Ministry of Micro, Small and Medium Enterprises, Government of India"
           />
           <img
             className="header-logo logo-khadi"

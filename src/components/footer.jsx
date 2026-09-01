@@ -1,6 +1,8 @@
 import { CircleHelp } from "lucide-react";
 
-function Footer() {
+function Footer({ totalVisits = 0 }) {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="site-footer">
       <div className="footer-inner">
@@ -15,8 +17,13 @@ function Footer() {
           <a href="mailto:apps.support@kvic.gov.in">apps.support@kvic.gov.in</a>
         </div>
         <div className="footer-meta">
-          © 2026 KVIC TRACE 1.0 <span>DIT 2026</span> KVIC TRACE 1.0 · Secure
-          Tracking Portal | 1.0
+          <span className="footer-visits">
+            Total visits: <strong>{Number(totalVisits).toLocaleString()}</strong>
+          </span>
+          <span>
+            © {currentYear} KVIC TRACE <span>DIT {currentYear}</span> Tracking
+            Portal | Beta Version
+          </span>
         </div>
       </div>
     </footer>

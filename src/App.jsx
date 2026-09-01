@@ -31,6 +31,7 @@ function App() {
   const [journeyData, setJourneyData] = useState(null);
   const [sharingPassport, setSharingPassport] = useState(false);
   const [collapsedSections, setCollapsedSections] = useState({});
+  const [totalVisits, setTotalVisits] = useState(0);
   const [pipPosition, setPipPosition] = useState(() => {
     if (typeof window === "undefined") {
       return { x: 24, y: 24 };
@@ -57,6 +58,15 @@ function App() {
     const params = new URLSearchParams(window.location.search);
     return params.get("id") || params.get("productId") || "BGS-SR-0145"; // Default for testing
   };
+
+  useEffect(() => {
+    const storageKey = "kvic-trace-total-visits";
+    const currentVisits = Number(localStorage.getItem(storageKey) || 0);
+    const nextVisits = currentVisits + 1;
+
+    localStorage.setItem(storageKey, String(nextVisits));
+    setTotalVisits(nextVisits);
+  }, []);
 
   // Fetch product data on component mount
   useEffect(() => {
@@ -356,7 +366,7 @@ function App() {
               tabIndex={0}
             >
               <span className="card-number">01</span>
-              <h2>Khadi institution information</h2>
+              <h2>Khadi Institution Information</h2>
               <button
                 type="button"
                 className="close-button"
@@ -486,7 +496,7 @@ function App() {
               tabIndex={0}
             >
               <span className="card-number">02</span>
-              <h2>Product information</h2>
+              <h2>Product Information</h2>
               <button
                 type="button"
                 className="close-button"
@@ -581,7 +591,7 @@ function App() {
               tabIndex={0}
             >
               <span className="card-number">03</span>
-              <h2>Production &amp; traceability information</h2>
+              <h2>Production &amp; Traceability Information</h2>
               <button
                 type="button"
                 className="close-button"
@@ -675,7 +685,7 @@ function App() {
 
                   <aside className="story-panel">
                     <span className="small-label">PRODUCTION STORY</span>
-                    <h3>How this Khadi product is made.</h3>
+                    <h3>How This Khadi Product Is Made.</h3>
                     <p>{productData.productionStory}</p>
                   </aside>
                 </div>
@@ -770,7 +780,7 @@ function App() {
     <div className="page-root">
       <Header />
       {renderContent()}
-      <Footer />
+      <Footer totalVisits={totalVisits} />
     </div>
   );
 }
